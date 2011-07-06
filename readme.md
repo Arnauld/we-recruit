@@ -1,6 +1,7 @@
 Try me!
-
-Launch integration tests
 ========================
 
-mvn -Pitest integration-test
+
+* Launch integration tests
+
+        mvn -Pitest integration-test
