@@ -1,0 +1,19 @@
+*{
+    margin:0;
+    padding:0;
+}
+body{
+    font-family:Arial;
+    background:#fff url(images/bg.png) no-repeat 0px 10px;
+}
+.title{
+    width:800px;
+    height:300px;
+    position:absolute;
+    top:0px;
+    left:5px;
+    background:transparent url(images/customLogo.gif) no-repeat top left;
+}
+#content{
+    margin:0 auto;
+}
