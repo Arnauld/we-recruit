@@ -7,6 +7,8 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.collection.IsCollectionContaining.hasItem;
 import static org.hamcrest.text.StringContains.containsString;
 import static org.junit.Assume.assumeTrue;
+import static util.Resources.loadProperties;
+import static util.Resources.loadXMLProperties;
 import static util.Seleniums.elemToText;
 
 import java.io.IOException;
@@ -35,13 +37,14 @@ public class UsecaseTest {
     
     @BeforeClass
     public static void loadResources() throws Exception {
-        resources = Resources.loadXMLProperties("/labels.xml");
+        resources = loadXMLProperties("/labels.xml");
     }
 
     @BeforeClass
     public static void startDriver() throws Exception {
-        // The chrome driver supports javascript?
-        driver = new ChromeDriver();
+        String driverClass = loadProperties("/settings.properties").getProperty("webdriver.class");
+        Class<?> klazz = Class.forName(driverClass);
+        driver = (RemoteWebDriver)klazz.newInstance();
         driver.get("http://localhost:8080");
     }
 

@@ -12,6 +12,7 @@
 		<maven.compiler.target>1.6</maven.compiler.target>
 		<webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
 		<gwt.version>2.3.0</gwt.version>
+		<webdriver.class>org.openqa.selenium.chrome.ChromeDriver</webdriver.class>
 	</properties>
 
 	<build>
@@ -169,13 +170,42 @@
 	</dependencies>
 
 	<profiles>
+		<profile>
+			<id>ie</id>
+			<properties>
+				<webdriver.class></webdriver.class>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>htmlunit</id>
+			<properties>
+				<webdriver.class>org.openqa.selenium.htmlunit.HtmlUnitDriver</webdriver.class>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>firefox</id>
+			<properties>
+				<webdriver.class>org.openqa.selenium.firefox.FirefoxDriver</webdriver.class>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>chrome</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<webdriver.class>org.openqa.selenium.chrome.ChromeDriver</webdriver.class>
+			</properties>
+		</profile>
+		
 		<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 		<!-- ~~~~~~~~Integration tests~~~~~~~~~~ -->
 		<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 		<profile>
 			<id>itest</id>
-			<properties>
-			</properties>
 			<build>
 				<plugins>
 					<plugin>
