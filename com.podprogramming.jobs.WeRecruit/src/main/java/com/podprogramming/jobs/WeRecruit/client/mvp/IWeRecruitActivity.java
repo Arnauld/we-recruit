@@ -1,9 +1,12 @@
 package com.podprogramming.jobs.WeRecruit.client.mvp;
 
+import java.util.List;
+
 import com.google.gwt.user.client.ui.HasHTML;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.IsWidget;
+import com.google.gwt.user.client.ui.RadioButton;
 
 /**
  * An activity which manages an instance of IWeRecruitView
@@ -33,6 +36,11 @@ public interface IWeRecruitActivity<V extends IWeRecruitActivity.IWeRecruitView>
 		 * @return
 		 */
 		public HasHTML mailToHasHTML();
+		
+		/**
+		 * 
+		 */
+		public List<RadioButton> getQuestionRadios ();
 
 		/**
 		 * 

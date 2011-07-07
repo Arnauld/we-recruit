@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="q1.label">Quelle annotation existe dans Guice ?</entry>
+	<entry key="q2.label">SaaS veut dire :</entry>
+	<entry key="q3.label">double number = (Double)null;</entry>
+	<entry key="q4.label">GoF signifie :</entry>
+	<entry key="q5.label">IoC signifie :</entry>
+
+	<entry key="q1.answer.label">@Inject</entry>
+	<entry key="q2.answer.label">Software as a Service</entry>
+	<entry key="q3.answer.label">Renvoie une NullPointerException à l'exécution.</entry>
+	<entry key="q4.answer.label">Gang of Four</entry>
+	<entry key="q5.answer.label">Inversion of Control</entry>
+	
+	<entry key="secret"><![CDATA[
+		<br/>Nous voulons travailler avec vous! Envoyez nous votre CV, votre page github, l'adresse de votre blog, votre compte twitter, et tout ce qui vous paraît intéressant à :<br/><a href="mailto:recruitment@pod-programming.com">recruitment@pod-programming.com</a>
+	]]></entry>
+</properties>

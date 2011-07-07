@@ -1,5 +1,8 @@
 package com.podprogramming.jobs.WeRecruit.client.mvp;
 
+import java.util.Arrays;
+import java.util.List;
+
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -74,8 +77,16 @@ public class WeRecruitView extends Composite implements IWeRecruitActivity.IWeRe
 		mailToHasHTML().setHTML( "" );
 
 		// clears the selection widgets
-		
-		
+	}
+	
+	public List<RadioButton> getQuestionRadios () {
+	    return Arrays.asList(
+	            q1Answer1, q1Answer2, q1Answer3,
+	            q2Answer1, q2Answer2, q2Answer3,
+	            q3Answer1, q3Answer2, q3Answer3,
+	            q4Answer1, q4Answer2, q4Answer3,
+	            q5Answer1, q5Answer2, q5Answer3
+	            );
 	}
 	
 	/**
