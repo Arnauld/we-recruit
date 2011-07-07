@@ -33,7 +33,7 @@ public class UsecaseTest {
     
     @AfterClass
     public static void stopDriver() throws Exception {
-        driver.close();
+        driver.quit();
     }
 
     @Test
