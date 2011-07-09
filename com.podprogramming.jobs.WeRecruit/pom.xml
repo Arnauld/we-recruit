@@ -15,10 +15,21 @@
 		<webdriver.class>org.openqa.selenium.chrome.ChromeDriver</webdriver.class>
 	</properties>
 
+	<!-- ************************************************ -->
+	<!-- *~~~~~~~~~~~~~~~~~~~~BUILD~~~~~~~~~~~~~~~~~~~~~* -->
+	<!-- ************************************************ -->
 	<build>
 		<!-- Generate compiled stuff in the folder used for developing mode -->
 		<outputDirectory>${webappDirectory}/WEB-INF/classes</outputDirectory>
 		<testOutputDirectory>${webappDirectory}/WEB-INF/classes</testOutputDirectory>
+
+		<!-- replace maven variables in test resources -->		
+		<testResources>
+			<testResource>
+				<directory>src/test/resources</directory>
+				<filtering>true</filtering>
+			</testResource>
+		</testResources>
 
 		<plugins>
 
@@ -58,11 +69,8 @@
 				<configuration>
 					<runTarget>WeRecruit.html</runTarget>
 					<hostedWebapp>${webappDirectory}</hostedWebapp>
-					<!-- TODO bench 
-					<gwt.style>PRETTY</gwt.style>
-					<draftCompile>true</draftCompile>
-					<localWorkers>1</localWorkers>
-					-->
+					<!-- TODO bench <gwt.style>PRETTY</gwt.style> <draftCompile>true</draftCompile> 
+						<localWorkers>1</localWorkers> -->
 				</configuration>
 			</plugin>
 
@@ -84,6 +92,7 @@
 				</configuration>
 			</plugin>
 
+			<!-- Don't use integration test in test phase @see profile#itest -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
@@ -111,6 +120,9 @@
 		</plugins>
 	</build>
 
+	<!-- ************************************************ -->
+	<!-- *~~~~~~~~~~~~~~~~DEPENDENCIES~~~~~~~~~~~~~~~~~~* -->
+	<!-- ************************************************ -->
 	<dependencies>
 		<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 		<!-- ~~~~~~~~~~~~~~~GWT~~~~~~~~~~~~~~~~~ -->
@@ -125,15 +137,14 @@
 			<artifactId>gwt-user</artifactId>
 			<version>${gwt.version}</version>
 		</dependency>
-		
-		
+
 		<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 		<!-- ~~~~~~~~~~~~~~~MISC~~~~~~~~~~~~~~~~ -->
 		<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 		<dependency>
-		    <groupId>com.google.guava</groupId>
-		    <artifactId>guava</artifactId>
-		    <version>r08</version>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>r08</version>
 		</dependency>
 
 		<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -169,28 +180,31 @@
 		</dependency>
 	</dependencies>
 
+	<!-- ************************************************ -->
+	<!-- *~~~~~~~~~~~~~~~~~~~PROFILES~~~~~~~~~~~~~~~~~~~* -->
+	<!-- ************************************************ -->
 	<profiles>
 		<profile>
 			<id>ie</id>
 			<properties>
-				<webdriver.class></webdriver.class>
+				<webdriver.class>org.openqa.selenium.ie.InternetExplorerDriver</webdriver.class>
 			</properties>
 		</profile>
-		
+
 		<profile>
 			<id>htmlunit</id>
 			<properties>
 				<webdriver.class>org.openqa.selenium.htmlunit.HtmlUnitDriver</webdriver.class>
 			</properties>
 		</profile>
-		
+
 		<profile>
 			<id>firefox</id>
 			<properties>
 				<webdriver.class>org.openqa.selenium.firefox.FirefoxDriver</webdriver.class>
 			</properties>
 		</profile>
-		
+
 		<profile>
 			<id>chrome</id>
 			<activation>
@@ -200,7 +214,7 @@
 				<webdriver.class>org.openqa.selenium.chrome.ChromeDriver</webdriver.class>
 			</properties>
 		</profile>
-		
+
 		<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 		<!-- ~~~~~~~~Integration tests~~~~~~~~~~ -->
 		<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -208,6 +222,7 @@
 			<id>itest</id>
 			<build>
 				<plugins>
+					<!-- Only use integration test in phase @see profile#itest -->
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-surefire-plugin</artifactId>

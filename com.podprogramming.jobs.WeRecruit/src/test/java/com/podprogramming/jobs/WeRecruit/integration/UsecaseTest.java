@@ -22,10 +22,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
-
-import util.Resources;
 
 import com.google.common.collect.Lists;
 
@@ -103,7 +100,7 @@ public class UsecaseTest {
     }
     
     @Test
-    public void mail_appear_with_good_responses() throws InterruptedException, IOException {
+    public void mail_appears_with_good_responses() throws InterruptedException, IOException {
         assumeTrue(driver.isJavascriptEnabled());
         driver.get("http://localhost:8080");
 
