@@ -18,9 +18,10 @@ body{
 }
 #content{
 	margin-top:150px;
+	margin-bottom: 150px;
 	margin-left: 300px; 
   	width:500px;
-    background:transparent url(images/bg.png) no-repeat 0px 50px;
+    background:transparent url(images/bg.png) no-repeat 0px 250px;
 }
 
 li.apply-icon {
