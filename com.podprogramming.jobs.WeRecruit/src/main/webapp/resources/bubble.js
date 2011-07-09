@@ -2,19 +2,19 @@ $(function() {
 	$(".home").hover(
 		function() {
 			$(".cloud" ).stop().animate({'left':'520px'}, 300, 'easeOutBack');
-			$(".camera").stop().animate({'left':'590px'}, 300, 'easeOutBack');
+			$(".search").stop().animate({'left':'590px'}, 300, 'easeOutBack');
 		},
 		function() {
 			$(".cloud" ).stop().animate({'left':'410px'}, 300, 'easeOutBack');
-			$(".camera").stop().animate({'left':'480px'}, 300, 'easeOutBack');
+			$(".search").stop().animate({'left':'480px'}, 300, 'easeOutBack');
 		}
 	);
 	$(".cloud").hover(
 		function() {
-			$(".camera").stop().animate({'left':'590px'}, 300, 'easeOutBack');
+			$(".search").stop().animate({'left':'590px'}, 300, 'easeOutBack');
 		},
 		function() {
-			$(".camera").stop().animate({'left':'480px'}, 300, 'easeOutBack');
+			$(".search").stop().animate({'left':'480px'}, 300, 'easeOutBack');
 		}
 	);
 

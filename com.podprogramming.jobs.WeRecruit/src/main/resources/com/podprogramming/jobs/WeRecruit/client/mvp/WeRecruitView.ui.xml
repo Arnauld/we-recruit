@@ -3,30 +3,60 @@
 	xmlns:g="urn:import:com.google.gwt.user.client.ui">
 	<g:HTMLPanel styleName="weRecruitView-main">
 	
-		<g:Label styleName="weRecruitView-question">Quelle annotation existe dans Guice ?</g:Label>
-		<g:RadioButton name="q1" styleName="weRecruitView-answer" ui:field="q1Answer1">@Inject</g:RadioButton>
-		<g:RadioButton name="q1" styleName="weRecruitView-answer" ui:field="q1Answer2">@Injection</g:RadioButton>
-		<g:RadioButton name="q1" styleName="weRecruitView-answer" ui:field="q1Answer3">@Deprecated</g:RadioButton>
+		<fieldset>
+			<legend>
+				<g:Label styleName="weRecruitView-question">Quelle annotation existe dans Guice ?</g:Label>
+			</legend>
+			<ul>
+				<li><g:RadioButton name="q1" styleName="weRecruitView-answer" ui:field="q1Answer1">@Inject</g:RadioButton></li>
+				<li><g:RadioButton name="q1" styleName="weRecruitView-answer" ui:field="q1Answer2">@Injection</g:RadioButton></li>
+				<li><g:RadioButton name="q1" styleName="weRecruitView-answer" ui:field="q1Answer3">@Deprecated</g:RadioButton></li>
+			</ul>
+		</fieldset>
 		
-		<g:Label styleName="weRecruitView-question">SaaS veut dire :</g:Label>
-		<g:RadioButton name="q2" styleName="weRecruitView-answer" ui:field="q2Answer1">Software as a Service</g:RadioButton>
-		<g:RadioButton name="q2" styleName="weRecruitView-answer" ui:field="q2Answer2">System as a Service</g:RadioButton>
-		<g:RadioButton name="q2" styleName="weRecruitView-answer" ui:field="q2Answer3">Obiwan Kenobi</g:RadioButton>
+		<fieldset>
+			<legend>
+				<g:Label styleName="weRecruitView-question">SaaS veut dire :</g:Label>
+			</legend>
+			<ul>
+				<li><g:RadioButton name="q2" styleName="weRecruitView-answer" ui:field="q2Answer1">Software as a Service</g:RadioButton></li>
+				<li><g:RadioButton name="q2" styleName="weRecruitView-answer" ui:field="q2Answer2">System as a Service</g:RadioButton></li>
+				<li><g:RadioButton name="q2" styleName="weRecruitView-answer" ui:field="q2Answer3">Obiwan Kenobi</g:RadioButton></li>
+			</ul>
+		</fieldset>
 		
-		<g:Label styleName="weRecruitView-question">double number = (Double)null;</g:Label>
-		<g:RadioButton name="q3" styleName="weRecruitView-answer" ui:field="q3Answer1">Ne compile pas.</g:RadioButton>
-		<g:RadioButton name="q3" styleName="weRecruitView-answer" ui:field="q3Answer2">Renvoie une NumberFormatException à l'éxécution.</g:RadioButton>
-		<g:RadioButton name="q3" styleName="weRecruitView-answer" ui:field="q3Answer3">Renvoie une NullPointerException à l'exécution.</g:RadioButton>
+		<fieldset>
+			<legend>
+				<g:Label styleName="weRecruitView-question">double number = (Double)null;</g:Label>
+			</legend>
+			<ul>
+				<li><g:RadioButton name="q3" styleName="weRecruitView-answer" ui:field="q3Answer1">Ne compile pas.</g:RadioButton></li>
+				<li><g:RadioButton name="q3" styleName="weRecruitView-answer" ui:field="q3Answer2">Renvoie une NumberFormatException à l'éxécution.</g:RadioButton></li>
+				<li><g:RadioButton name="q3" styleName="weRecruitView-answer" ui:field="q3Answer3">Renvoie une NullPointerException à l'exécution.</g:RadioButton></li>
+			</ul>
+		</fieldset>
 		
-		<g:Label styleName="weRecruitView-question">GoF signifie :</g:Label>
-		<g:RadioButton name="q4" styleName="weRecruitView-answer" ui:field="q4Answer1">Getter on Field</g:RadioButton>
-		<g:RadioButton name="q4" styleName="weRecruitView-answer" ui:field="q4Answer2">Gang of Four</g:RadioButton>
-		<g:RadioButton name="q4" styleName="weRecruitView-answer" ui:field="q4Answer3">Good old Frame</g:RadioButton>
+		<fieldset>
+			<legend>
+				<g:Label styleName="weRecruitView-question">GoF signifie :</g:Label>
+			</legend>
+			<ul>
+				<li><g:RadioButton name="q4" styleName="weRecruitView-answer" ui:field="q4Answer1">Getter on Field</g:RadioButton></li>
+				<li><g:RadioButton name="q4" styleName="weRecruitView-answer" ui:field="q4Answer2">Gang of Four</g:RadioButton></li>
+				<li><g:RadioButton name="q4" styleName="weRecruitView-answer" ui:field="q4Answer3">Good old Frame</g:RadioButton></li>
+			</ul>
+		</fieldset>
 		
-		<g:Label styleName="weRecruitView-question">IoC signifie :</g:Label>
-		<g:RadioButton name="q5" styleName="weRecruitView-answer" ui:field="q5Answer1">Integration on Cloud</g:RadioButton>
-		<g:RadioButton name="q5" styleName="weRecruitView-answer" ui:field="q5Answer2">Inversion of Control</g:RadioButton>
-		<g:RadioButton name="q5" styleName="weRecruitView-answer" ui:field="q5Answer3">Implementation over Crap</g:RadioButton>
+		<fieldset>
+			<legend>
+				<g:Label styleName="weRecruitView-question">IoC signifie :</g:Label>
+			</legend>
+			<ul>
+				<li><g:RadioButton name="q5" styleName="weRecruitView-answer" ui:field="q5Answer1">Integration on Cloud</g:RadioButton></li>
+				<li><g:RadioButton name="q5" styleName="weRecruitView-answer" ui:field="q5Answer2">Inversion of Control</g:RadioButton></li>
+				<li><g:RadioButton name="q5" styleName="weRecruitView-answer" ui:field="q5Answer3">Implementation over Crap</g:RadioButton></li>
+			</ul>
+		</fieldset>
 		
 		<g:HTML styleName="weRecruitView-mail" ui:field="mailTo"></g:HTML>
 

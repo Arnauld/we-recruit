@@ -8,9 +8,31 @@ h1, .weRecruitView-combination {
 	text-align: left;
 }
 
+p {
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
 .weRecruitView-mail {
 	font-size: 1em;
 	font-weight: bold;
 	color: black;
 }
 
+.weRecruitView-main li {
+	list-style: none;
+}
+
+.weRecruitView-main fieldset {
+	margin: 5px;
+	border: none;
+	border-top: 1px solid #CCC;
+}
+
+ul.enum {
+	margin-left: 20px;
+}
+ul.enum li {
+	margin-top:.25em;
+	margin-bottom:.25em;
+}

@@ -19,9 +19,15 @@ body{
 }
 #content{
 	margin-top:150px;
-	margin-left: auto; 
-  	margin-right: auto; 
-  	width:600px;
+	margin-left: 300px; 
+  	width:500px;
+}
+
+li.apply-icon {
+    background:transparent url(images/apply-22px.png) no-repeat 0px 0px;
+	padding-left: 25px;
+	list-style: none;
+	line-height: 22px;
 }
 
 /**
