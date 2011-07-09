@@ -5,20 +5,12 @@ h1, .weRecruitView-combination {
 	font-size: 2em;
 	font-weight: bold;
 	color: black;
-	margin: 40px 0px 70px 120px;
 	text-align: left;
 }
 
-div, .weRecruitView-mail {
+.weRecruitView-mail {
 	font-size: 1em;
 	font-weight: bold;
 	color: black;
 }
 
-.weRecruitView-question {
-	margin: 10px 0px 4px 0px;
-}
-
-.weRecruitView-answer {
-	margin: 0px 20px 0px 0px;
-}
