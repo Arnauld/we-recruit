@@ -124,6 +124,8 @@ a.icon{
     width:100px;
     text-shadow:1px 1px 1px #fff;
 }
+
+.item ul li a.hover,
 .item ul li a:hover{
     background-color:#fff;
     color:#444;

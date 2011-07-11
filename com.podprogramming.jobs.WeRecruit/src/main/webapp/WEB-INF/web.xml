@@ -4,9 +4,20 @@
     "http://java.sun.com/dtd/web-app_2_3.dtd">
 
 <web-app>
-  <!-- Default page to serve -->
-  <welcome-file-list>
-    <welcome-file>WeRecruit.html</welcome-file>
-  </welcome-file-list>
+
+	<filter>
+		<filter-name>scalatra</filter-name>
+		<filter-class>curriculum.web.CurriculumFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>scalatra</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<!-- Default page to serve -->
+	<welcome-file-list>
+		<welcome-file>WeRecruit.html</welcome-file>
+	</welcome-file-list>
 
 </web-app>

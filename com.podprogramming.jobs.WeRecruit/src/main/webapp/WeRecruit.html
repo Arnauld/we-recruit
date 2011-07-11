@@ -28,6 +28,8 @@
     <link type="text/css" rel="stylesheet" href="resources/bubble.css" media="screen"/>
     <link type="text/css" rel="stylesheet" href="resources/radio.css" media="screen"/>
     <link type="text/css" rel="stylesheet" href="WeRecruit.css">
+    <link type="text/css" rel="stylesheet" href="resources/ui-progress-bar/stylesheets/ui.progress-bar.css" media="screen"/>
+    <link type="text/css" rel="stylesheet" href="resources/cluster.css" media="screen"/>
     
   </head>
 
@@ -55,34 +57,33 @@
 		<div class="title"></div>
 		<nav class="navigation" id="nav">
 			<div class="item home">
-                    <img src="resources/images/icon_bg-200px.png" alt="" width="199" height="199" class="circle"/>
-                    <a href="#" class="icon"></a>
-                    <h2>Home</h2>
-                    <ul>
-                        <li><a href="#">Portfolio</a></li>
-                        <li><a href="#">Services</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="item cloud">
-                    <img src="resources/images/icon_bg-200px.png" alt="" width="199" height="199" class="circle"/>
-                    <a href="#" class="icon"></a>
-                    <h2>Cloud</h2>
-                    <ul>
-                        <li><a href="#">Start a new Node</a></li>
-                        <li><a href="#">List nodes</a></li>
-                    </ul>
-                </div>
-                <div class="item search">
-                    <img src="resources/images/icon_bg-200px.png" alt="" width="199" height="199" class="circle"/>
-                    <a href="#" class="icon"></a>
-                    <h2>Search</h2>
-                    <ul>
-                        <li><a href="#">Search</a></li>
-                        <li><a id="search-found" href="#">Found</a></li>
-                    </ul>
-                </div>
+                <img src="resources/images/icon_bg-200px.png" alt="" width="199" height="199" class="circle"/>
+                <a href="#" class="icon"></a>
+                <h2>Home</h2>
+                <ul>
+                    <li><a href="/" onclick="refresh()">Reload</a></li>
+                </ul>
+            </div>
+            <div class="item cloud">
+                <img src="resources/images/icon_bg-200px.png" alt="" width="199" height="199" class="circle"/>
+                <a href="#" class="icon"></a>
+                <h2>Cloud</h2>
+                <ul>
+                    <li><a href="#"  id="start-node">Start a new Node</a></li>
+                    <li><a href="#"  id="list-node">List nodes</a></li>
+                </ul>
+            </div>
+            <div class="item search">
+                <img src="resources/images/icon_bg-200px.png" alt="" width="199" height="199" class="circle"/>
+                <a href="#" class="icon">&nbsp;</a>
+                <h2>Search</h2>
+                <ul>
+                    <li><a href="#" id="search">Search</a></li>
+                    <li><a href="#" id="search-found">Found</a></li>
+                </ul>
+            </div>
 		</nav>
+		<a href="#" id="click-n-clear">&nbsp;</a>
 	</div>
 	
 	<div id="content">
@@ -127,10 +128,16 @@
 	    <div id="weRecruit"></div>
     
     </div>
+    <section id="logs">
+    </section>
+    <section id="display">
+    </section>
 	<!-- The JavaScript -->
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script type="text/javascript" src="resources/jquery/jquery-1.5.1.min.js"></script>
     <script type="text/javascript" src="resources/jquery/jquery.easing.1.3.js"></script>
     <script type="text/javascript" src="resources/bubble.js"></script>
     <script type="text/javascript" src="resources/hack.js"></script>
+    <script type="text/javascript" src="resources/ui-progress-bar/javascripts/progress.js"></script>
+  	<script type="text/javascript" src="resources/cluster.js"></script>
   </body>
 </html>
