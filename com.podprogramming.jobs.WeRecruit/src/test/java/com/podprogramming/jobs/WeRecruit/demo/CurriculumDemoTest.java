@@ -82,7 +82,9 @@ public class CurriculumDemoTest {
         deactivateHack.click();
         
         pause(TimeUnit.SECONDS.toMillis(10));
-        System.out.println("No more actions ctrl+c to quit");
+        System.out.println("==============================");
+        System.out.println("Demo is done! ctrl+c to quit");
+        System.out.println("==============================");
         Thread.sleep(1000*stepLength);
     }
 
