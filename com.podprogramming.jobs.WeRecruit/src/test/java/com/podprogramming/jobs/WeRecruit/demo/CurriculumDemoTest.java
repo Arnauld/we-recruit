@@ -47,6 +47,11 @@ public class CurriculumDemoTest {
     
     @Test
     public void execute() throws IOException, InterruptedException {
+        // activate hacking
+        WebElement activateHack = driver.findElement(By.id("activate-hack"));
+        activateHack.click();
+
+        //
         WebElement searchMenu = driver.findElement(By.xpath("//div[@class='item search']/a"));
         pause();
         searchMenu.click();//appear
@@ -69,10 +74,14 @@ public class CurriculumDemoTest {
         WebElement link = driver.findElement(By.className("instance-link"));
         link.click();
         
+        // cleanup
         WebElement otop = driver.findElement(By.id("click-n-clear"));
         otop.click();
-        pause(TimeUnit.SECONDS.toMillis(10));
+        // activate hacking
+        WebElement deactivateHack = driver.findElement(By.id("activate-hack"));
+        deactivateHack.click();
         
+        pause(TimeUnit.SECONDS.toMillis(10));
         System.out.println("No more actions ctrl+c to quit");
         Thread.sleep(1000*stepLength);
     }

@@ -27,11 +27,25 @@ $(function() {
 
         $this.find('a:first,h2').removeClass('active');
     });
+    
+    var predefined = [ {
+    	name:"Puck",
+    	port:9001
+    }, {
+    	name:"Oberon",
+    	port:9002
+    }, {
+    	name:"Titania",
+    	port:9003
+    }];
+    var predefinedIndex = 0;
 
     $("#start-node").click(function () {
+    	var params = predefined[predefinedIndex % predefined.length];
+    	predefinedIndex++;
         cluster.send('POST', "/cluster/start", {
-                "start-node-name":"McCallum",
-                "start-node-port":9001
+                "start-node-name":params["name"],
+                "start-node-port":params["port"]
          });
     });
     
@@ -40,7 +54,11 @@ $(function() {
                 "entity":"curriculum_vitae",
                 "instance.potential": "100%"
          });
-    })
+    });
+    
+    $("#list-node").click(function () {
+    	cluster.send('POST', "/cluster/list", {});
+    });
 
     // start polling
     cluster.startPolling();
