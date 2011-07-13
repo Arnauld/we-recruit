@@ -29,24 +29,28 @@ $(function() {
     });
     
     var predefined = [ {
-    	name:"Puck",
-    	port:9001
+        name:"Puck",
+        port:9001
     }, {
-    	name:"Oberon",
-    	port:9002
+        name:"Oberon",
+        port:9002
     }, {
-    	name:"Titania",
-    	port:9003
+        name:"Titania",
+        port:9003
     }];
     var predefinedIndex = 0;
 
     $("#start-node").click(function () {
-    	var params = predefined[predefinedIndex % predefined.length];
-    	predefinedIndex++;
+        var params = predefined[predefinedIndex % predefined.length];
+        predefinedIndex++;
         cluster.send('POST', "/cluster/start", {
                 "start-node-name":params["name"],
                 "start-node-port":params["port"]
          });
+    });
+
+    $("#list-nodes").click(function () {
+        cluster.send('GET', "/cluster/list", {});
     });
     
     $("#search").click(function () {
@@ -56,9 +60,6 @@ $(function() {
          });
     });
     
-    $("#list-node").click(function () {
-    	cluster.send('POST', "/cluster/list", {});
-    });
 
     // start polling
     cluster.startPolling();
@@ -72,14 +73,13 @@ var cluster = {
     log: function(message) {
         var $msg = cluster.formatMessage(message);
         $msg.hide();
+        $msg.attr("displayedAt", new Date().getTime());
 
         var messages = $("#logs div.message");
         // remove the tops elements
         if(messages.length>=cluster.logMaxSize) {
             var overflow = messages.slice(0, messages.length-cluster.logMaxSize+1);
-            overflow.fadeOut(300, function () {
-                $(this).remove();
-            });
+            cluster.removeMessage(overflow);
         }
         $("#display").empty();
         $("#logs").fadeIn("slow", function() {
@@ -90,7 +90,7 @@ var cluster = {
             function() {
                 $(this).removeClass("hover");
             })
-            $msg.fadeIn(300);        	
+            $msg.fadeIn(300);            
         });
         cluster.shiftContent();
         $msg.find(".instance-link").click(function() {
@@ -101,12 +101,29 @@ var cluster = {
             return false;
         });
     },
+
+    removeMessage: function($msg) {
+        $msg.fadeOut(300, function () {
+            $(this).remove();
+        });
+    },
+
+    removeObsoleteMessages: function() {
+        var threshold = new Date().getTime() - 20*1000;//20secs
+        $("#logs div.message").each(function(index,msg) {
+            var $msg = $(msg);
+            var displayedAt = $msg.attr("displayedAt");
+            if(displayedAt<threshold)
+                cluster.removeMessage($msg);
+        });
+
+    },
     
     shiftContent: function () {
-    	if(cluster.contentShifted)
-    		return;
-    	$("#content").stop().animate({"margin-left":"650px"}, 1000, "swing");
-    	cluster.contentShifted = true;
+        if(cluster.contentShifted)
+            return;
+        $("#content").stop().animate({"margin-left":"650px"}, 1000, "swing");
+        cluster.contentShifted = true;
     },
     
     contentShifted: false,
@@ -159,10 +176,11 @@ var cluster = {
      * TODO: replace by long polling
      */
     waitForMessage: function () {
-        console.log("waitForMessage isPolling: " + cluster.isPolling);
         if(cluster.isPolling)
             return;
         cluster.isPolling = true;
+
+        cluster.removeObsoleteMessages();
 
         cluster.tickCount = cluster.tickCount + 1;
         var elligible =   (cluster.numberOfCallsWithoutMessage==0)
@@ -170,7 +188,6 @@ var cluster = {
                         ||(cluster.numberOfCallsWithoutMessage<5 && cluster.tickCount%5 == 0)
                         ||(cluster.tickCount%10 == 0);
 
-        console.log("waitForMessage elligible: " + elligible);
         if(elligible)
             cluster.pollMessages();
         cluster.isPolling = false;

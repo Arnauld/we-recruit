@@ -62,6 +62,12 @@
     background:transparent url(images/iconic/lightbulb_20x32_orange.png) no-repeat center center;
 }
 
+/* ~~~ eav ~~~ */
+
+#logs .type-instance-link {
+    background:transparent url(images/iconic/lightbulb_20x32_blue.png) no-repeat center center;
+}
+
 /* ~~~ task ~~~ */
 
 #logs .type-task-scheduled {
@@ -73,6 +79,7 @@
 #logs .type-search-started {
     background:transparent url(images/iconic/magnifying_glass_32x32_blue.png) no-repeat center center;
 }
+
 #logs .type-search-done {
     background:transparent url(images/iconic/lightbulb_20x32_blue.png) no-repeat center center;
 }

@@ -52,13 +52,13 @@ public class UsecaseTest {
 
     @Test
     public void meta_pageId_isPresent() {
-        WebElement pageId = driver.findElement(By.xpath("/html/head/meta[@name='page-id']"));
+        WebElement pageId = driver.findElement(By.xpath("//head/meta[@name='page-id']"));
         assertThat(pageId.getAttribute("content"), equalTo("WeRecruit.html"));
     }
 
     @Test
     public void h1_weRecruit() {
-        WebElement h1 = driver.findElement(By.xpath("/html/body/h1"));
+        WebElement h1 = driver.findElement(By.xpath("//div[@id='content']/h1"));
         assertThat(h1.getText(), containsString("Nous recrutons!"));
     }
 

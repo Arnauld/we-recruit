@@ -7,6 +7,9 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
+	<!-- ************************************************ -->
+	<!-- *~~~~~~~~~~~~~~~~~PROPERTIES~~~~~~~~~~~~~~~~~~~* -->
+	<!-- ************************************************ -->
 	<properties>
 		<maven.compiler.source>1.6</maven.compiler.source>
 		<maven.compiler.target>1.6</maven.compiler.target>
@@ -14,8 +17,9 @@
 		<gwt.version>2.3.0</gwt.version>
 		<webdriver.class>org.openqa.selenium.chrome.ChromeDriver</webdriver.class>
 		<webdriver.version>2.0a4</webdriver.version><!-- 2.0rc2 issues with chrome -->
+		<jetty-maven.version>8.0.0.M2</jetty-maven.version>
 	</properties>
-
+	
 	<!-- ************************************************ -->
 	<!-- *~~~~~~~~~~~~~~~~~~~~BUILD~~~~~~~~~~~~~~~~~~~~~* -->
 	<!-- ************************************************ -->
@@ -119,6 +123,15 @@
 				</executions>
 			</plugin>
 
+			<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+			<!-- Jetty -->
+			<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+			<plugin>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>${jetty-maven.version}</version>
+			</plugin>
+
 		</plugins>
 	</build>
 
@@ -168,14 +181,6 @@
 		<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 		<!-- ~~~~~~~~~~~~~Selenium~~~~~~~~~~~~~~ -->
 		<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-		<!-- 
-		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-remote-control</artifactId>
-			<version>${webdriver.version}</version>
-			<scope>test</scope>
-		</dependency>
-		 -->
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium</artifactId>
@@ -195,7 +200,7 @@
 		<dependency>
 			<groupId>org.technbolts</groupId>
 			<artifactId>curriculum_2.9.0-1</artifactId>
-			<version>0.0.2-SNAPSHOT</version>
+			<version>0.0.3-SNAPSHOT</version>
 		</dependency>
 
 	</dependencies>
@@ -273,7 +278,7 @@
 					<plugin>
 						<groupId>org.mortbay.jetty</groupId>
 						<artifactId>jetty-maven-plugin</artifactId>
-						<version>8.0.0.M2</version>
+						<version>${jetty-maven.version}</version>
 						<executions>
 							<execution>
 								<id>start-jetty</id>
@@ -336,7 +341,7 @@
 					<plugin>
 						<groupId>org.mortbay.jetty</groupId>
 						<artifactId>jetty-maven-plugin</artifactId>
-						<version>8.0.0.M2</version>
+						<version>${jetty-maven.version}</version>
 						<executions>
 							<execution>
 								<id>start-jetty</id>
@@ -422,6 +427,9 @@
 		</profile>
 	</profiles>
 
+	<!-- ************************************************ -->
+	<!-- *~~~~~~~~~~~~~~~~REPOSITORIES~~~~~~~~~~~~~~~~~~* -->
+	<!-- ************************************************ -->
 	<repositories>
 		<repository>
 			<id>arnauld.github.com</id>

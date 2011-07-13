@@ -53,15 +53,18 @@
     
     <a href="https://github.com/Arnauld/we-recruit" id="fork_me"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a> 
     
-	<div id="header">
-		<div class="title"></div>
-		<nav class="navigation" id="nav">
-			<div class="item home">
+    <div id="header">
+        <div class="title"></div>
+        <nav class="navigation" id="nav">
+            <div class="item home">
                 <img src="resources/images/icon_bg-200px.png" alt="" width="199" height="199" class="circle"/>
                 <a href="#" class="icon"></a>
                 <h2>Home</h2>
                 <ul>
                     <li><a href="/" onclick="refresh()">Reload</a></li>
+                    <li>
+                        <a href="https://github.com/Arnauld/Curriculum" target="_blank">Clone me on github</a>
+                    </li>
                 </ul>
             </div>
             <div class="item cloud">
@@ -69,8 +72,8 @@
                 <a href="#" class="icon"></a>
                 <h2>Cloud</h2>
                 <ul>
-                    <li><a href="#"  id="start-node">Start a new Node</a></li>
-                    <li><a href="#"  id="list-node">List nodes</a></li>
+                    <li><a href="#" id="start-node">Start a new Node</a></li>
+                    <li><a href="#" id="list-nodes">List nodes</a></li>
                 </ul>
             </div>
             <div class="item search">
@@ -81,64 +84,64 @@
                     <li><a href="#" id="search">Search</a></li>
                 </ul>
             </div>
-		</nav>
-		<a href="#" id="activate-hack">&nbsp;</a>
-		<a href="#" id="deactivate-hack">&nbsp;</a>
-		<a href="#" id="click-n-clear">&nbsp;</a>
-	</div>
-	
-	<div id="content">
+        </nav>
+        <a href="#" id="activate-hack">&nbsp;</a>
+        <a href="#" id="deactivate-hack">&nbsp;</a>
+        <a href="#" id="click-n-clear">&nbsp;</a>
+    </div>
     
-	    <h1>Nous recrutons!
-		<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://bit.ly/weRecruit" data-text="@podProg recrute! Jettez un oeil à l'annonce ici :" data-count="vertical">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-		</h1>
-	    <p> 
-		    Pod Programming est une jeune startup dont le but est de faciliter le cycle de vie de votre système d'information en proposant une technique de modélisation innovante de vos données permettant de les gérer au runtime.<br/>
-		    Pour cela, nous proposons une solution dirigée par les modèles. Cette solution se compose d'un atelier de modélisation vous permettant de décrire votre logique métier ainsi que d'un ensemble de frameworks interprétant vos modèles (Business logic, Contraintes, UI, Persistance, Business process, etc.).
-	    </p>
-	    <p>
-		    Afin de développer cet ensemble de frameworks, nous cherchons un développeur java talentueux. Nous recherchons une personne :
-		    <ul class="enum" id="sk">
-		    <li id="sk_jfmk">Qui possède une super connaissance des frameworks java.</li>
-		    <li id="sk_jlang">Et des autres langages de la JVM !</li>
-		    <li id="sk_soc">Qui est très active dans la communauté (conférences, blog, JUGs, etc.).</li>
-		    <li id="sk_dev">Qui est/sera fière d'être encore programmeur/euse à 30 ans !</li>
-		    <li id="sk_ag">Qui bosse agile.</li>
-		    <li id="sk_ioc">Qui connaît l'IOC, le Multithreading, la gestion de cache, et encore plus !</li>
-		    <li id="sk_tech">Qui est très au fait des dernières technos (serveurs, framework, cloud, etc.).</li>
-		    <li id="sk_oss">Qui a une forte volonté de contribuer à des projets open source.</li>
-		    <li id="sk_mde">Qui n'a pas peur de l'ingénierie des modèles (MDE).</li>
-		    <li id="sk_will">Et surtout une personne qui soit prête à nous le montrer, alors à vos forks !</li>
-		    </ul>
-	    </p>
-	    
-	    <p>
-		    Pour cela nous vous proposons : 
-		    <ul class="enum">
-		    <li>Un poste basé à Rennes, mais le télétravail est envisageable si vous nous épatez.</li>
-		    <li>Des conditions de travail et un salaire motivants.</li>
-		    <li>Un super défi à relever !</li>
-		    </ul>
-	    </p>
-	    <p>
-	    	N'hésitez pas à bloguer et tweeter au maximum cette offre (en mentionnant le compte twitter @podProg) pour avoir une chance de gagner par tirage au sort le livre IT de votre choix ! (Tirage au sort le 21 juillet 2011, livre devant être dispo sur amazon France)
-	    </p>
-	    <p>
-	    	Pour savoir comment postuler, répondez aux quelques questions qui suivent:
-	    </p>
-	    <div id="weRecruit"></div>
+    <div id="content">
+    
+        <h1>Nous recrutons!
+        <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://bit.ly/weRecruit" data-text="@podProg recrute! Jettez un oeil à l'annonce ici :" data-count="vertical">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+        </h1>
+        <p> 
+            Pod Programming est une jeune startup dont le but est de faciliter le cycle de vie de votre système d'information en proposant une technique de modélisation innovante de vos données permettant de les gérer au runtime.<br/>
+            Pour cela, nous proposons une solution dirigée par les modèles. Cette solution se compose d'un atelier de modélisation vous permettant de décrire votre logique métier ainsi que d'un ensemble de frameworks interprétant vos modèles (Business logic, Contraintes, UI, Persistance, Business process, etc.).
+        </p>
+        <p>
+            Afin de développer cet ensemble de frameworks, nous cherchons un développeur java talentueux. Nous recherchons une personne :
+            <ul class="enum" id="sk">
+            <li id="sk_jfmk">Qui possède une super connaissance des frameworks java.</li>
+            <li id="sk_jlang">Et des autres langages de la JVM !</li>
+            <li id="sk_soc">Qui est très active dans la communauté (conférences, blog, JUGs, etc.).</li>
+            <li id="sk_dev">Qui est/sera fière d'être encore programmeur/euse à 30 ans !</li>
+            <li id="sk_ag">Qui bosse agile.</li>
+            <li id="sk_ioc">Qui connaît l'IOC, le Multithreading, la gestion de cache, et encore plus !</li>
+            <li id="sk_tech">Qui est très au fait des dernières technos (serveurs, framework, cloud, etc.).</li>
+            <li id="sk_oss">Qui a une forte volonté de contribuer à des projets open source.</li>
+            <li id="sk_mde">Qui n'a pas peur de l'ingénierie des modèles (MDE).</li>
+            <li id="sk_will">Et surtout une personne qui soit prête à nous le montrer, alors à vos forks !</li>
+            </ul>
+        </p>
+        
+        <p>
+            Pour cela nous vous proposons : 
+            <ul class="enum">
+            <li>Un poste basé à Rennes, mais le télétravail est envisageable si vous nous épatez.</li>
+            <li>Des conditions de travail et un salaire motivants.</li>
+            <li>Un super défi à relever !</li>
+            </ul>
+        </p>
+        <p>
+            N'hésitez pas à bloguer et tweeter au maximum cette offre (en mentionnant le compte twitter @podProg) pour avoir une chance de gagner par tirage au sort le livre IT de votre choix ! (Tirage au sort le 21 juillet 2011, livre devant être dispo sur amazon France)
+        </p>
+        <p>
+            Pour savoir comment postuler, répondez aux quelques questions qui suivent:
+        </p>
+        <div id="weRecruit"></div>
     
     </div>
     <section id="logs">
     </section>
     <section id="display">
     </section>
-	<!-- The JavaScript -->
+    <!-- The JavaScript -->
     <script type="text/javascript" src="resources/jquery/jquery-1.5.1.min.js"></script>
     <script type="text/javascript" src="resources/jquery/jquery.easing.1.3.js"></script>
     <script type="text/javascript" src="resources/bubble.js"></script>
     <script type="text/javascript" src="resources/hack.js"></script>
     <script type="text/javascript" src="resources/ui-progress-bar/javascripts/progress.js"></script>
-  	<script type="text/javascript" src="resources/cluster.js"></script>
+      <script type="text/javascript" src="resources/cluster.js"></script>
   </body>
 </html>
