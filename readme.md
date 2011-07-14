@@ -56,3 +56,9 @@ Similar to the demo, but uses the *itest* profile instead.
 * Test on chrome
 
         mvn -Pchrome,itest integration-test
+
+Notes
+=======================================
+
+       git repack && git prune
+
