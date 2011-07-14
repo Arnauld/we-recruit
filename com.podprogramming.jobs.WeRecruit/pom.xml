@@ -1,439 +1,442 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.podprogramming.jobs</groupId>
-	<artifactId>WeRecruit</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+    <groupId>com.podprogramming.jobs</groupId>
+    <artifactId>WeRecruit</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>war</packaging>
 
-	<!-- ************************************************ -->
-	<!-- *~~~~~~~~~~~~~~~~~PROPERTIES~~~~~~~~~~~~~~~~~~~* -->
-	<!-- ************************************************ -->
-	<properties>
-		<maven.compiler.source>1.6</maven.compiler.source>
-		<maven.compiler.target>1.6</maven.compiler.target>
-		<webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
-		<gwt.version>2.3.0</gwt.version>
-		<webdriver.class>org.openqa.selenium.chrome.ChromeDriver</webdriver.class>
-		<webdriver.version>2.0a4</webdriver.version><!-- 2.0rc2 issues with chrome -->
-		<jetty-maven.version>8.0.0.M2</jetty-maven.version>
-	</properties>
-	
-	<!-- ************************************************ -->
-	<!-- *~~~~~~~~~~~~~~~~~~~~BUILD~~~~~~~~~~~~~~~~~~~~~* -->
-	<!-- ************************************************ -->
-	<build>
-		<!-- Generate compiled stuff in the folder used for developing mode -->
-		<outputDirectory>${webappDirectory}/WEB-INF/classes</outputDirectory>
-		<testOutputDirectory>${webappDirectory}/WEB-INF/classes</testOutputDirectory>
+    <!-- ************************************************ -->
+    <!-- *~~~~~~~~~~~~~~~~~PROPERTIES~~~~~~~~~~~~~~~~~~~* -->
+    <!-- ************************************************ -->
+    <properties>
+        <maven.compiler.source>1.6</maven.compiler.source>
+        <maven.compiler.target>1.6</maven.compiler.target>
+        <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
+        <gwt.version>2.3.0</gwt.version>
+        <webdriver.class>org.openqa.selenium.chrome.ChromeDriver</webdriver.class>
+        <!-- keep 2.0a4 version for demo purpose, then switch to the 2.0 release version
+             that requires chrome driver @see os specific profiles-->
+        <webdriver.version>2.0a4</webdriver.version>
+        <jetty-maven.version>8.0.0.M2</jetty-maven.version>
+        <curriculum.version>0.0.4-SNAPSHOT</curriculum.version>
+    </properties>
+    
+    <!-- ************************************************ -->
+    <!-- *~~~~~~~~~~~~~~~~~~~~BUILD~~~~~~~~~~~~~~~~~~~~~* -->
+    <!-- ************************************************ -->
+    <build>
+        <!-- Generate compiled stuff in the folder used for developing mode -->
+        <outputDirectory>${webappDirectory}/WEB-INF/classes</outputDirectory>
+        <testOutputDirectory>${webappDirectory}/WEB-INF/classes</testOutputDirectory>
 
-		<!-- replace maven variables in test resources -->
-		<testResources>
-			<testResource>
-				<directory>src/test/resources</directory>
-				<filtering>true</filtering>
-			</testResource>
-		</testResources>
+        <!-- replace maven variables in test resources -->
+        <testResources>
+            <testResource>
+                <directory>src/test/resources</directory>
+                <filtering>true</filtering>
+            </testResource>
+        </testResources>
 
-		<plugins>
+        <plugins>
 
-			<!-- GWT Maven Plugin -->
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>gwt-maven-plugin</artifactId>
-				<version>2.3.0</version>
-				<dependencies>
-					<dependency>
-						<groupId>com.google.gwt</groupId>
-						<artifactId>gwt-user</artifactId>
-						<version>${gwt.version}</version>
-					</dependency>
-					<dependency>
-						<groupId>com.google.gwt</groupId>
-						<artifactId>gwt-dev</artifactId>
-						<version>${gwt.version}</version>
-					</dependency>
-					<dependency>
-						<groupId>com.google.gwt</groupId>
-						<artifactId>gwt-servlet</artifactId>
-						<version>${gwt.version}</version>
-					</dependency>
-				</dependencies>
-				<executions>
-					<execution>
-						<goals>
-							<goal>compile</goal>
-							<goal>test</goal>
-							<goal>generateAsync</goal>
-						</goals>
-					</execution>
-				</executions>
-				<!-- Plugin configuration. There are many available options, see gwt-maven-plugin 
-					documentation at codehaus.org -->
-				<configuration>
-					<runTarget>WeRecruit.html</runTarget>
-					<hostedWebapp>${webappDirectory}</hostedWebapp>
-					<!-- TODO bench <gwt.style>PRETTY</gwt.style> <draftCompile>true</draftCompile> 
-						<localWorkers>1</localWorkers> -->
-				</configuration>
-			</plugin>
+            <!-- GWT Maven Plugin -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>gwt-maven-plugin</artifactId>
+                <version>2.3.0</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.google.gwt</groupId>
+                        <artifactId>gwt-user</artifactId>
+                        <version>${gwt.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.google.gwt</groupId>
+                        <artifactId>gwt-dev</artifactId>
+                        <version>${gwt.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.google.gwt</groupId>
+                        <artifactId>gwt-servlet</artifactId>
+                        <version>${gwt.version}</version>
+                    </dependency>
+                </dependencies>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>
+                            <goal>test</goal>
+                            <goal>generateAsync</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <!-- Plugin configuration. There are many available options, see gwt-maven-plugin 
+                    documentation at codehaus.org -->
+                <configuration>
+                    <runTarget>WeRecruit.html</runTarget>
+                    <hostedWebapp>${webappDirectory}</hostedWebapp>
+                    <!-- TODO bench <gwt.style>PRETTY</gwt.style> <draftCompile>true</draftCompile> 
+                        <localWorkers>1</localWorkers> -->
+                </configuration>
+            </plugin>
 
-			<!-- Copy static web files before executing gwt:run -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>2.1.1</version>
-				<executions>
-					<execution>
-						<phase>compile</phase>
-						<goals>
-							<goal>exploded</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<webappDirectory>${webappDirectory}</webappDirectory>
-				</configuration>
-			</plugin>
+            <!-- Copy static web files before executing gwt:run -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.1.1</version>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>exploded</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <webappDirectory>${webappDirectory}</webappDirectory>
+                </configuration>
+            </plugin>
 
-			<!-- Don't use integration test in test phase @see profile#itest -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.4.2</version>
-				<configuration>
-					<skip>true</skip>
-				</configuration>
-				<executions>
-					<execution>
-						<id>surefire-test</id>
-						<phase>test</phase>
-						<goals>
-							<goal>test</goal>
-						</goals>
-						<configuration>
-							<skip>false</skip>
-							<excludes>
-								<exclude>**/integration/**</exclude>
-								<exclude>**/demo/**</exclude>
-							</excludes>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+            <!-- Don't use integration test in test phase @see profile#itest -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.4.2</version>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>surefire-test</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <skip>false</skip>
+                            <excludes>
+                                <exclude>**/integration/**</exclude>
+                                <exclude>**/demo/**</exclude>
+                            </excludes>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
 
-			<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-			<!-- Jetty -->
-			<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-			<plugin>
-				<groupId>org.mortbay.jetty</groupId>
-				<artifactId>jetty-maven-plugin</artifactId>
-				<version>${jetty-maven.version}</version>
-			</plugin>
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+            <!-- Jetty -->
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+            <plugin>
+                <groupId>org.mortbay.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>${jetty-maven.version}</version>
+            </plugin>
 
-		</plugins>
-	</build>
+        </plugins>
+    </build>
 
-	<!-- ************************************************ -->
-	<!-- *~~~~~~~~~~~~~~~~DEPENDENCIES~~~~~~~~~~~~~~~~~~* -->
-	<!-- ************************************************ -->
-	<dependencies>
-		<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-		<!-- ~~~~~~~~~~~~~~~GWT~~~~~~~~~~~~~~~~~ -->
-		<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-		<dependency>
-			<groupId>com.google.gwt</groupId>
-			<artifactId>gwt-servlet</artifactId>
-			<version>${gwt.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.google.gwt</groupId>
-			<artifactId>gwt-user</artifactId>
-			<version>${gwt.version}</version>
-		</dependency>
+    <!-- ************************************************ -->
+    <!-- *~~~~~~~~~~~~~~~~DEPENDENCIES~~~~~~~~~~~~~~~~~~* -->
+    <!-- ************************************************ -->
+    <dependencies>
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- ~~~~~~~~~~~~~~~GWT~~~~~~~~~~~~~~~~~ -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-servlet</artifactId>
+            <version>${gwt.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-user</artifactId>
+            <version>${gwt.version}</version>
+        </dependency>
 
-		<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-		<!-- ~~~~~~~~~~~~~~~MISC~~~~~~~~~~~~~~~~ -->
-		<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-			<version>r08</version>
-		</dependency>
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- ~~~~~~~~~~~~~~~MISC~~~~~~~~~~~~~~~~ -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>r08</version>
+        </dependency>
 
-		<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-		<!-- ~~~~~~~~~~~~~~~Test~~~~~~~~~~~~~~~~ -->
-		<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.8.1</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.hamcrest</groupId>
-			<artifactId>hamcrest-all</artifactId>
-			<version>1.1</version>
-			<scope>test</scope>
-		</dependency>
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- ~~~~~~~~~~~~~~~Test~~~~~~~~~~~~~~~~ -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.8.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-all</artifactId>
+            <version>1.1</version>
+            <scope>test</scope>
+        </dependency>
 
-		<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-		<!-- ~~~~~~~~~~~~~Selenium~~~~~~~~~~~~~~ -->
-		<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium</artifactId>
-			<version>${webdriver.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-server</artifactId>
-			<version>${webdriver.version}</version>
-			<scope>test</scope>
-		</dependency>
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- ~~~~~~~~~~~~~Selenium~~~~~~~~~~~~~~ -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium</artifactId>
+            <version>${webdriver.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-server</artifactId>
+            <version>${webdriver.version}</version>
+            <scope>test</scope>
+        </dependency>
 
-		<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-		<!-- ~~~~~~~~~~~~curriculum~~~~~~~~~~~~~ -->
-		<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-		<dependency>
-			<groupId>org.technbolts</groupId>
-			<artifactId>curriculum_2.9.0-1</artifactId>
-			<version>0.0.3-SNAPSHOT</version>
-		</dependency>
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- ~~~~~~~~~~~~curriculum~~~~~~~~~~~~~ -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <dependency>
+            <groupId>org.technbolts</groupId>
+            <artifactId>curriculum_2.9.0-1</artifactId>
+            <version>${curriculum.version}</version>
+        </dependency>
 
-	</dependencies>
+    </dependencies>
 
-	<!-- ************************************************ -->
-	<!-- *~~~~~~~~~~~~~~~~~~~PROFILES~~~~~~~~~~~~~~~~~~~* -->
-	<!-- ************************************************ -->
-	<profiles>
-		<profile>
-			<id>ie</id>
-			<properties>
-				<webdriver.class>org.openqa.selenium.ie.InternetExplorerDriver</webdriver.class>
-			</properties>
-		</profile>
+    <!-- ************************************************ -->
+    <!-- *~~~~~~~~~~~~~~~~~~~PROFILES~~~~~~~~~~~~~~~~~~~* -->
+    <!-- ************************************************ -->
+    <profiles>
+        <profile>
+            <id>ie</id>
+            <properties>
+                <webdriver.class>org.openqa.selenium.ie.InternetExplorerDriver</webdriver.class>
+            </properties>
+        </profile>
 
-		<profile>
-			<id>htmlunit</id>
-			<properties>
-				<webdriver.class>org.openqa.selenium.htmlunit.HtmlUnitDriver</webdriver.class>
-			</properties>
-		</profile>
+        <profile>
+            <id>htmlunit</id>
+            <properties>
+                <webdriver.class>org.openqa.selenium.htmlunit.HtmlUnitDriver</webdriver.class>
+            </properties>
+        </profile>
 
-		<profile>
-			<id>firefox</id>
-			<properties>
-				<webdriver.class>org.openqa.selenium.firefox.FirefoxDriver</webdriver.class>
-			</properties>
-		</profile>
+        <profile>
+            <id>firefox</id>
+            <properties>
+                <webdriver.class>org.openqa.selenium.firefox.FirefoxDriver</webdriver.class>
+            </properties>
+        </profile>
 
-		<profile>
-			<id>chrome</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-			<properties>
-				<webdriver.class>org.openqa.selenium.chrome.ChromeDriver</webdriver.class>
-			</properties>
-		</profile>
+        <profile>
+            <id>chrome</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <webdriver.class>org.openqa.selenium.chrome.ChromeDriver</webdriver.class>
+            </properties>
+        </profile>
 
-		<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-		<!-- ~~~~~~~~Integration tests~~~~~~~~~~ -->
-		<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-		<profile>
-			<id>itest</id>
-			<build>
-				<plugins>
-					<!-- Only use integration test in phase @see profile#itest -->
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-surefire-plugin</artifactId>
-						<configuration>
-							<skip>true</skip>
-						</configuration>
-						<executions>
-							<execution>
-								<id>surefire-itest</id>
-								<phase>integration-test</phase>
-								<goals>
-									<goal>test</goal>
-								</goals>
-								<configuration>
-									<skip>false</skip>
-									<includes>
-										<include>**/integration/**</include>
-									</includes>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-
-
-					<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-					<!-- Jetty -->
-					<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-					<plugin>
-						<groupId>org.mortbay.jetty</groupId>
-						<artifactId>jetty-maven-plugin</artifactId>
-						<version>${jetty-maven.version}</version>
-						<executions>
-							<execution>
-								<id>start-jetty</id>
-								<phase>pre-integration-test</phase>
-								<goals>
-									<goal>run-war</goal>
-								</goals>
-								<configuration>
-									<scanIntervalSeconds>0</scanIntervalSeconds>
-									<daemon>true</daemon>
-								</configuration>
-							</execution>
-							<execution>
-								<id>stop-jetty</id>
-								<phase>post-integration-test</phase>
-								<goals>
-									<goal>stop</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-		<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-		<!-- ~~~~~~~~~~~~~~~Demo~~~~~~~~~~~~~~~~ -->
-		<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-		<profile>
-			<id>demo</id>
-			<build>
-				<plugins>
-					<!-- Only use integration test in phase @see profile#itest -->
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-surefire-plugin</artifactId>
-						<configuration>
-							<skip>true</skip>
-						</configuration>
-						<executions>
-							<execution>
-								<id>surefire-itest</id>
-								<phase>integration-test</phase>
-								<goals>
-									<goal>test</goal>
-								</goals>
-								<configuration>
-									<skip>false</skip>
-									<includes>
-										<include>**/demo/**</include>
-									</includes>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- ~~~~~~~~Integration tests~~~~~~~~~~ -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <profile>
+            <id>itest</id>
+            <build>
+                <plugins>
+                    <!-- Only use integration test in phase @see profile#itest -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <skip>true</skip>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>surefire-itest</id>
+                                <phase>integration-test</phase>
+                                <goals>
+                                    <goal>test</goal>
+                                </goals>
+                                <configuration>
+                                    <skip>false</skip>
+                                    <includes>
+                                        <include>**/integration/**</include>
+                                    </includes>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
 
 
-					<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-					<!-- Jetty -->
-					<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-					<plugin>
-						<groupId>org.mortbay.jetty</groupId>
-						<artifactId>jetty-maven-plugin</artifactId>
-						<version>${jetty-maven.version}</version>
-						<executions>
-							<execution>
-								<id>start-jetty</id>
-								<phase>pre-integration-test</phase>
-								<goals>
-									<goal>run-war</goal>
-								</goals>
-								<configuration>
-									<scanIntervalSeconds>0</scanIntervalSeconds>
-									<daemon>true</daemon>
-								</configuration>
-							</execution>
-							<execution>
-								<id>stop-jetty</id>
-								<phase>post-integration-test</phase>
-								<goals>
-									<goal>stop</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
+                    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <!-- Jetty -->
+                    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <plugin>
+                        <groupId>org.mortbay.jetty</groupId>
+                        <artifactId>jetty-maven-plugin</artifactId>
+                        <version>${jetty-maven.version}</version>
+                        <executions>
+                            <execution>
+                                <id>start-jetty</id>
+                                <phase>pre-integration-test</phase>
+                                <goals>
+                                    <goal>run-war</goal>
+                                </goals>
+                                <configuration>
+                                    <scanIntervalSeconds>0</scanIntervalSeconds>
+                                    <daemon>true</daemon>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>stop-jetty</id>
+                                <phase>post-integration-test</phase>
+                                <goals>
+                                    <goal>stop</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- ~~~~~~~~~~~~~~~Demo~~~~~~~~~~~~~~~~ -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <profile>
+            <id>demo</id>
+            <build>
+                <plugins>
+                    <!-- Only use integration test in phase @see profile#itest -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <skip>true</skip>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>surefire-itest</id>
+                                <phase>integration-test</phase>
+                                <goals>
+                                    <goal>test</goal>
+                                </goals>
+                                <configuration>
+                                    <skip>false</skip>
+                                    <includes>
+                                        <include>**/demo/**</include>
+                                    </includes>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
 
-		<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-		<!-- ~~~~~~~~~~~~~OS based~~~~~~~~~~~~~~ -->
-		<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-		<profile>
-			<id>mac</id>
-			<activation>
-				<os>
-					<family>mac</family>
-				</os>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-			<properties>
-				<driver.dir>${basedir}/drivers/mac</driver.dir>
-			</properties>
-		</profile>
 
-		<!-- linux -->
-		<profile>
-			<id>linux32</id>
-			<activation>
-				<os>
-					<name>linux</name>
-					<arch>x86_32</arch>
-				</os>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-			<properties>
-				<driver.dir>${basedir}/drivers/linux32</driver.dir>
-			</properties>
-		</profile>
+                    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <!-- Jetty -->
+                    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <plugin>
+                        <groupId>org.mortbay.jetty</groupId>
+                        <artifactId>jetty-maven-plugin</artifactId>
+                        <version>${jetty-maven.version}</version>
+                        <executions>
+                            <execution>
+                                <id>start-jetty</id>
+                                <phase>pre-integration-test</phase>
+                                <goals>
+                                    <goal>run-war</goal>
+                                </goals>
+                                <configuration>
+                                    <scanIntervalSeconds>0</scanIntervalSeconds>
+                                    <daemon>true</daemon>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>stop-jetty</id>
+                                <phase>post-integration-test</phase>
+                                <goals>
+                                    <goal>stop</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
 
-		<profile>
-			<id>linux64</id>
-			<activation>
-				<os>
-					<name>linux</name>
-					<arch>x86_64</arch>
-				</os>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-			<properties>
-				<driver.dir>${basedir}/drivers/linux64</driver.dir>
-			</properties>
-		</profile>
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- ~~~~~~~~~~~~~OS based~~~~~~~~~~~~~~ -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <profile>
+            <id>mac</id>
+            <activation>
+                <os>
+                    <family>mac</family>
+                </os>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <driver.dir>${basedir}/drivers/mac</driver.dir>
+            </properties>
+        </profile>
 
-		<!-- windows -->
-		<profile>
-			<id>windows</id>
-			<activation>
-				<os>
-					<family>windows</family>
-				</os>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-			<properties>
-				<driver.dir>${basedir}/drivers/windows</driver.dir>
-			</properties>
-		</profile>
-	</profiles>
+        <!-- linux -->
+        <profile>
+            <id>linux32</id>
+            <activation>
+                <os>
+                    <name>linux</name>
+                    <arch>x86_32</arch>
+                </os>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <driver.dir>${basedir}/drivers/linux32</driver.dir>
+            </properties>
+        </profile>
 
-	<!-- ************************************************ -->
-	<!-- *~~~~~~~~~~~~~~~~REPOSITORIES~~~~~~~~~~~~~~~~~~* -->
-	<!-- ************************************************ -->
-	<repositories>
-		<repository>
-			<id>arnauld.github.com</id>
-			<url>https://github.com/Arnauld/arnauld.github.com/raw/master/maven2</url>
-		</repository>
-	</repositories>
+        <profile>
+            <id>linux64</id>
+            <activation>
+                <os>
+                    <name>linux</name>
+                    <arch>x86_64</arch>
+                </os>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <driver.dir>${basedir}/drivers/linux64</driver.dir>
+            </properties>
+        </profile>
+
+        <!-- windows -->
+        <profile>
+            <id>windows</id>
+            <activation>
+                <os>
+                    <family>windows</family>
+                </os>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <driver.dir>${basedir}/drivers/windows</driver.dir>
+            </properties>
+        </profile>
+    </profiles>
+
+    <!-- ************************************************ -->
+    <!-- *~~~~~~~~~~~~~~~~REPOSITORIES~~~~~~~~~~~~~~~~~~* -->
+    <!-- ************************************************ -->
+    <repositories>
+        <repository>
+            <id>arnauld.github.com</id>
+            <url>https://github.com/Arnauld/arnauld.github.com/raw/master/maven2</url>
+        </repository>
+    </repositories>
 </project>

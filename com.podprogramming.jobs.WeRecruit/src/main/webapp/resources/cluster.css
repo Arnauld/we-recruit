@@ -74,6 +74,10 @@
     background:transparent url(images/iconic/clock_32x32_green.png) no-repeat center center;
 }
 
+#logs .type-task-done {
+    background:transparent url(images/iconic/clock_32x32_blue.png) no-repeat center center;
+}
+
 /* ~~~ search ~~~ */
 
 #logs .type-search-started {
@@ -91,6 +95,10 @@
 }
 
 /* ~~~ node ~~~ */
+
+#logs .type-dispatching-job {
+    background:transparent url(images/iconic/cloud_32x20_blue.png) no-repeat center center;
+}
 
 #logs .type-node-start-error {
     background:transparent url(images/iconic/cloud_32x20_orange.png) no-repeat center center;
@@ -111,4 +119,3 @@
 #logs .type-node-started {
     background:transparent url(images/iconic/cloud_32x20_green.png) no-repeat center center;
 }
-

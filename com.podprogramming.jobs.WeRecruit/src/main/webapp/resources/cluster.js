@@ -93,13 +93,21 @@ var cluster = {
             $msg.fadeIn(300);            
         });
         cluster.shiftContent();
-        $msg.find(".instance-link").click(function() {
+        var potentialLinks = $msg.find(".instance-link").click(function() {
             var $this = $(this);
             $("#display").append("<iframe src='" + $this.attr("href") + "' width='630px' height='2400px' frameborder='0'></iframe>");
             $("#logs").fadeOut();
             selectSkills();
             return false;
-        });
+        }).closest(".message")
+          .css("background-color","rgb(124, 189, 221)")
+          .animate({ backgroundColor: "#ff0000", color:"white" }, 2000, 'swing', function() {
+                $(this).animate({ 
+                    backgroundColor: "rgb(124, 189, 221)", color:"black"
+                }, 2000, 'swing', function() {
+                    $(this).css("background-color", "rgba(124, 189, 221, .5)");
+                });
+            });
     },
 
     removeMessage: function($msg) {
@@ -109,7 +117,7 @@ var cluster = {
     },
 
     removeObsoleteMessages: function() {
-        var threshold = new Date().getTime() - 20*1000;//20secs
+        var threshold = new Date().getTime() - 30*1000;//30secs
         $("#logs div.message").each(function(index,msg) {
             var $msg = $(msg);
             var displayedAt = $msg.attr("displayedAt");

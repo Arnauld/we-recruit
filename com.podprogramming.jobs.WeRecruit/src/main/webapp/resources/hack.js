@@ -4,7 +4,7 @@ var selectSkills = function() {
 		if($elem.attr("id")!="sk_soc") {
 			setTimeout(function() {
 				$(elem).addClass("apply-icon");
-			}, (index+1)*750);
+			}, (index+1)*950);
 		}
 	});
 };
